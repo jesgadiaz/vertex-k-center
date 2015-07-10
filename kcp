@@ -7,7 +7,7 @@ import os
 import sys
 import string
 
-################### FUNCTIONS ##############################################################
+## FUNCTIONS #######################################################
 
 # Get the cardinality of every vertex using best_known_size for the pruning
 def cardinality():
