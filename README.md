@@ -13,4 +13,4 @@ The kcp python file is runned with the command:
           (the pcb3038 instance is not present in the Lib folder because GitHub can support so heavy files)
     - seed = any number
     - repetitions = every instance can be repeated more than 1 time
-    - outputfile = path and name for the outputfile with the experimental approximation factor obtained by the tunned algorithm over the selected instances
+    - outputfile = path and name for the outputfile with the experimental approximation factor obtained by the algorithm over the selected instances
