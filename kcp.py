@@ -1104,7 +1104,7 @@ def CDS(seed, repetitions, version):
             # Computing the mid value
             mid = math.ceil(lower + ((upper - lower)/2))
             mid_value = ordered_sizes[int(mid)]
-            print("mid_value: " + repr(mid_value))
+            #print("mid_value: " + repr(mid_value))
             # Computing the cardinality of every vertex over the pruned input graph
             cardinality_size(mid_value)
             # Executing the Critical Dominating Set algorithm
@@ -1148,8 +1148,10 @@ def CDS(seed, repetitions, version):
                     else:
                         upper = mid
         #Print the best size found
-        print(repr(best_known_size) + "   " + repr(mid_value))
-        f.write(repr(best_known_size) + "   " + repr(mid_value) + '\n')
+        #print(repr(best_known_size) + "   " + repr(mid_value))
+        print(repr(best_known_size))
+        #f.write(repr(best_known_size) + "   " + repr(mid_value) + '\n')
+        f.write(repr(best_known_size) + '\n')
 
 def CDSP(seed, repetitions, version):
     global prob, best_known_size, distance, f, C, gon_sol, n, m, k, ordered_sizes, card
@@ -1230,8 +1232,10 @@ def CDSP(seed, repetitions, version):
                 #else:
                 #    upper = mid
         #Print the best size found
-        print(repr(best_known_size) + "   " + repr(mid_value))
-        f.write(repr(best_known_size) + "   " + repr(mid_value) + '\n')
+        #print(repr(best_known_size) + "   " + repr(mid_value))
+        print(repr(best_known_size))
+        #f.write(repr(best_known_size) + "   " + repr(mid_value) + '\n')
+        f.write(repr(best_known_size) + '\n')
 
 def CDS_n4(seed, repetitions):
     global prob, best_known_size, distance, f, C, gon_sol, n, m, k, ordered_sizes, card
