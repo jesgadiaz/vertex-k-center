@@ -901,17 +901,18 @@ def loadInstance(instance):
         matrix[v1][v2] = weight
         matrix[v2][v1] = weight
     # Apply the Floyd-Marshal algorithm
-    for i in range(0, n):
-        matrix[i][i] = 0
-    for i in range(0, n):
-        for j in range(0, n):
-            for l in range(0, n):
-                if matrix[i][j] == float("inf") or matrix[i][l] == float("inf"):
-                    cost = float("inf")
-                else:
-                    cost = matrix[i][j] + matrix[i][l]
-                if cost < matrix[j][l]:
-                    matrix[j][l] = cost
+    if instance[0:4] == "pmed":
+        for i in range(0, n):
+            matrix[i][i] = 0
+        for i in range(0, n):
+            for j in range(0, n):
+                for l in range(0, n):
+                    if matrix[i][j] == float("inf") or matrix[i][l] == float("inf"):
+                        cost = float("inf")
+                    else:
+                        cost = matrix[i][j] + matrix[i][l]
+                    if cost < matrix[j][l]:
+                        matrix[j][l] = cost
     f.close()
     # Order the set of possible solutions' size
     ordered_sizes = []
