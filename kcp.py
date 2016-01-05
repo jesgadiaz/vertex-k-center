@@ -237,10 +237,10 @@ def get_possible_centers(s):
 def reduce_T_boolean(T_boolean, C, index, s):
     for i in range(0, n):
         if matrix[C[index]][i] <= s:
-            if T_boolean[i]:
-                for j in range(0, n):
-                    if matrix[j][i] <= s:
-                        T_boolean[j] = False
+            #if T_boolean[i]:
+            for j in range(0, n):
+                if matrix[j][i] <= s:
+                    T_boolean[j] = False
     return T_boolean
 
 def reduce_T(T_boolean):
