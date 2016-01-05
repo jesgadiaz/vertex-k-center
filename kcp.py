@@ -234,14 +234,18 @@ def get_possible_centers(s):
             out.append(i)
     return out
 
-def reduce_T_boolean(T_boolean, C, index, s):
+def reduce_T_boolean(neighbors, T_boolean, C, index, s):
+    subset = []
     for i in range(0, n):
-        if matrix[C[index]][i] <= s:
-            #if T_boolean[i]:
-            for j in range(0, n):
-                if matrix[j][i] <= s:
-                    T_boolean[j] = False
-    return T_boolean
+        if matrix[C[index]][i] <= s and neighbors:
+            subset.append(i)
+            neighbors[i] = False
+    for i in subset:
+        #if T_boolean[i]:
+        for j in range(0, n):
+            if matrix[j][i] <= s:
+                T_boolean[j] = False
+    return [T_boolean, neighbors]
 
 def reduce_T(T_boolean):
     T = []
@@ -256,6 +260,9 @@ def hs_algorithm(s):
     possible_new_center = []
     distance = []
     not_done = True
+    neighbors = []
+    for i in range(0, n):
+        neighbors.append(True)
     T_boolean = []
     for i in range(0, n):
         T_boolean.append(True)
@@ -265,7 +272,9 @@ def hs_algorithm(s):
     #for i in range(0,n):
     #    distance.append(float("inf"))
     C.append(T[random.randint(0, n-1)])
-    T_boolean = reduce_T_boolean(T_boolean, C, 0, s)
+    temp = T_boolean = reduce_T_boolean(neighbors, T_boolean, C, 0, s)
+    T_boolean = temp[0]
+    neighbors = temp[1]
     T = reduce_T(T_boolean)
     #update_distance(C, 0)
     i = 0
@@ -275,7 +284,9 @@ def hs_algorithm(s):
         #if len(possible_new_center) > 0:
         if len(T) > 0:
             C.append(T[random.randint(0, len(T)-1)])
-            T_boolean = reduce_T_boolean(T_boolean, C, i, s)
+            temp = reduce_T_boolean(neighbors, T_boolean, C, i, s)
+            T_boolean = temp[0]
+            neighbors = temp[1]
             T = reduce_T(T_boolean)
             #update_distance(C, i)
         else:
