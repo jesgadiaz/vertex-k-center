@@ -75,13 +75,15 @@ def update_distance(centers, max_index):
 # Get the farthest node
 def farthest_node():
     max_dist = 0
-    max_dist_node = 0
+    max_dist_nodes = []
     global distance
     for i in range(0,n):
         if distance[i] > max_dist:
             max_dist = distance[i]
-            max_dist_node = i
-    return max_dist_node
+    for i in range(0,n):
+        if distance[i] == max_dist:
+            max_dist_nodes.append(i)
+    return max_dist_nodes[random.randint(0,len(max_dist_nodes)-1)]
 
 # Get the farthest node
 def farthest_node_in_guide_sol(guide_sol):
@@ -132,8 +134,10 @@ def max_cardinality(l):
     for i in l:
         if card[i] > max_card:
             max_card = card[i]
-            max_card_node = i
-    return max_card_node
+    for i in l:
+        if card[i] == max_card:
+            max_card_nodes.append(i)           
+    return max_card_nodes[random.randint(0,len(max_card_nodes)-1)]
 
 # Get the solution size of the currently constructed solution
 def solution_size():
