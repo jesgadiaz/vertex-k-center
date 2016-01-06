@@ -129,7 +129,7 @@ def reduced_critical_neighbors(cn, node, s):
 # Get the maximum cardinality vertex
 def max_cardinality(l):
     max_card = 0
-    max_card_node = 0
+    max_card_nodes = []
     global card
     for i in l:
         if card[i] > max_card:
