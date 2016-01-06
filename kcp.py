@@ -33,23 +33,37 @@ def cardinality_size(size):
                 card[i] += 1
 
 # Update Cardinality (i.e. do not take into account the previously dominated vertices)
+#def update_cardinality(centers, max_index, s):
+    #global dominated
+    #global card
+    #recently_dominated = []
+    #for i in range(0,n):
+        #recently_dominated.append(False)
+    #for i in range(0,n):
+        #if not dominated[i]:
+            #for j in range(0,max_index):
+                #if matrix[i][centers[j]] <= s:
+                    #dominated[i] = True
+                    #recently_dominated[i] = True
+    #for i in range(0,n):
+        #if recently_dominated[i]:
+            #for j in range(0,n):
+                #if matrix[j][i] <= s:
+                    #card[j] -= 1
+                    
 def update_cardinality(centers, max_index, s):
     global dominated
     global card
     recently_dominated = []
     for i in range(0,n):
-        recently_dominated.append(False)
-    for i in range(0,n):
-        if not dominated[i]:
-            for j in range(0,max_index):
-                if matrix[i][centers[j]] <= s:
-                    dominated[i] = True
-                    recently_dominated[i] = True
-    for i in range(0,n):
-        if recently_dominated[i]:
-            for j in range(0,n):
-                if matrix[j][i] <= s:
-                    card[j] -= 1
+        if matrix[centers[max_index-1]][i] <= s \
+                and not dominated[i]:
+            recently_dominated.append(i)
+            dominated[i] = True
+    for i in recently_dominated:
+        for j in range(0, n):
+            if matrix[i][j] <= s and i != j:
+                card[j] -= 1                    
 
 # Update Distance. Get the distance from every vertex to its nearest center in the partial solution
 def update_distance(centers, max_index):
