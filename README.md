@@ -1,4 +1,12 @@
-# vertex-k-center
+# A better and faster implementation
+You can find a better and faster implementation in C in the next repository:
+
+https://github.com/jesgadiaz/k-center-in-C
+
+The running time of the implementation in C is up to 100 times faster.
+
+
+# This implementation (vertex-k-center)
 Implementation of the main approximation algorithms and heuristics for the vertex k-center selection problem.
 
 The kcp python file must be runned from its path, and with the Lib folder at this same path.
